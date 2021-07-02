@@ -1,0 +1,63 @@
+<div class="row" style="margin-top:10px;margin-bottom:10px;">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2 ">
+            <div class="display">
+                <div class="icon">
+                    <i class="fa fa-cube"></i>
+                </div>
+                <div class="number">
+                    <h5>
+                    <small>#</small>
+                        <span data-counter="counterup" data-value="stats.blockHeight">{{stats.blockHeight | number: 0 }}</span>
+                    </h5>
+                    <small>Block Height</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2 ">
+            <div class="display">
+                <div class="icon">
+                    <i class="fa fa-hourglass-half"></i>
+                </div>
+                <div class="number">
+                    <h5>
+                        <span data-counter="counterup" data-value="stats.blockTime">{{stats.blockTime | number: 2}} s</span>
+                    </h5>
+                    <small>Block Time</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2 ">
+            <div class="display">
+                <div class="icon">
+                    <i class="fa fa-tachometer"></i>
+                </div>
+                <div class="number">
+                    <h5>
+                        <span data-counter="counterup" data-value="stats.hashrate">{{stats.hashrate | number: 0}}/s</span>
+                    </h5>
+                    <small>Network Hashrate</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2 ">
+            <div class="display">
+                <div class="icon">
+                    <i class="icon-puzzle"></i>
+                </div>
+                <div class="number">
+                    <h5>
+                        <span data-counter="counterup" data-value="stats.difficulty">{{stats.difficulty | number: 2}}</span>
+                    </h5>
+                    <small>DIFFICULTY</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

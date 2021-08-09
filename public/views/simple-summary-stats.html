@@ -1,63 +1,112 @@
-<div class="row" style="margin-top:10px;margin-bottom:10px;">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard-stat2 ">
-            <div class="display">
-                <div class="icon">
-                    <i class="fa fa-cube"></i>
-                </div>
-                <div class="number">
-                    <h5>
-                    <small>#</small>
-                        <span data-counter="counterup" data-value="stats.blockHeight">{{stats.blockHeight | number: 0 }}</span>
-                    </h5>
-                    <small>Block Height</small>
-                </div>
-            </div>
+<!-- <div class="row" style="margin-top:10px;margin-bottom:10px;">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2 ">
+      <div class="display">
+        <div class="icon">
+          <i class="fa fa-cube"></i>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard-stat2 ">
-            <div class="display">
-                <div class="icon">
-                    <i class="fa fa-hourglass-half"></i>
-                </div>
-                <div class="number">
-                    <h5>
-                        <span data-counter="counterup" data-value="stats.blockTime">{{stats.blockTime | number: 2}} s</span>
-                    </h5>
-                    <small>Block Time</small>
-                </div>
-            </div>
+        <div class="number">
+          <h5>
+            <small>#</small>
+            <span data-counter="counterup" data-value="stats.blockHeight">{{stats.blockHeight | number: 0 }}</span>
+          </h5>
+          <small>Block Height</small>
         </div>
+      </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard-stat2 ">
-            <div class="display">
-                <div class="icon">
-                    <i class="fa fa-tachometer"></i>
-                </div>
-                <div class="number">
-                    <h5>
-                        <span data-counter="counterup" data-value="stats.hashrate">{{stats.hashrate | number: 0}}/s</span>
-                    </h5>
-                    <small>Network Hashrate</small>
-                </div>
-            </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2 ">
+      <div class="display">
+        <div class="icon">
+          <i class="fa fa-hourglass-half"></i>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard-stat2 ">
-            <div class="display">
-                <div class="icon">
-                    <i class="icon-puzzle"></i>
-                </div>
-                <div class="number">
-                    <h5>
-                        <span data-counter="counterup" data-value="stats.difficulty">{{stats.difficulty | number: 2}}</span>
-                    </h5>
-                    <small>DIFFICULTY</small>
-                </div>
-            </div>
+        <div class="number">
+          <h5>
+            <span data-counter="counterup" data-value="stats.blockTime">{{stats.blockTime | number: 2}} s</span>
+          </h5>
+          <small>Block Time</small>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2 ">
+      <div class="display">
+        <div class="icon">
+          <i class="fa fa-tachometer"></i>
+        </div>
+        <div class="number">
+          <h5>
+            <span data-counter="counterup" data-value="stats.hashrate">{{stats.hashrate | number: 0}}/s</span>
+          </h5>
+          <small>Network Hashrate</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2 ">
+      <div class="display">
+        <div class="icon">
+          <i class="icon-puzzle"></i>
+        </div>
+        <div class="number">
+          <h5>
+            <span data-counter="counterup" data-value="stats.difficulty">{{stats.difficulty | number: 2}}</span>
+          </h5>
+          <small>DIFFICULTY</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- COMPONENT: STATS -->
+<div class="stats">
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-acent"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>Block Height</h2>
+        <p>{{ stats.blockHeight | number: 0 }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-transaction icon-water-blue-two"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>Network Hashrate</h2>
+        <p>{{ stats.hashrate | number: 0 }}/s</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-globe icon-water-blue-two"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>Block Time</h2>
+        <p>{{ stats.blockTime | number: 2 }} s</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-data icon-water-blue-two"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>Difficulty</h2>
+        <p>{{ stats.difficulty | number: 2 }}</p>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- COMPONENT: STATS -->

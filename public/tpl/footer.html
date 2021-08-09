@@ -1,5 +1,4 @@
-<!-- BEGIN PRE-FOOTER -->
-<div class="page-prefooter">
+<!-- <div class="page-prefooter">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
@@ -21,10 +20,7 @@
                     </li>
                     <li>
                         <a ng-show="settings.github" href="{{settings.github}}" target="_blank" data-original-title="github" class="github"></a>
-                    </li><!-- 
-                    <li>
-                        <a ng-show="settings.linkedin" href="{{settings.linkedin}}" target="_blank" data-original-title="linkedin" class="linkedin"></a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 footer-block">
@@ -42,12 +38,78 @@
         </div>
     </div>
 </div>
-<!-- END PRE-FOOTER -->
-<!-- BEGIN POST-FOOTER -->
 <div class="page-footer">
     <div class="container" ng-bind-html="settings.copyright"></div>
 </div>
 <div class="scroll-to-top">
     <i class="icon-arrow-up"></i>
-</div>
-<!-- END POST-FOOTER -->
+</div> -->
+
+
+<!-- COMPONENT: FOOTER -->
+<footer class="footer w-full py-16 bg-night-blue text-white relative bottom-0">
+  <div class="container">
+    <div class="footer__col">
+      <h3 class="heading">Community</h3>
+      <!-- COMPONENT: SOCIAL ICONS -->
+      <div class="social-icons mb-8">
+        <a href="https://t.me/AcentChannel" target="_blank">
+          <span>
+            <!-- <i class="ico-telegram ico-gray"></i> -->
+            <i class="ico-telegram bg-dark-sky-blue"></i>
+          </span>
+        </a>
+        <a href="https://t.me/AcentOfficialChat" target="_blank">
+          <span>
+            <!-- <i class="ico-telegram ico-gray"></i> -->
+            <i class="ico-telegram bg-dark-sky-blue"></i>
+          </span>
+        </a>
+        <a href="https://bit.ly/ACE_Medium" target="_blank">
+          <span>
+            <!-- <i class="ico-medium ico-gray"></i> -->
+            <i class="ico-medium bg-duck-egg-blue"></i>
+          </span>
+        </a>
+        <a href="https://bit.ly/2UCSX3b" target="_blank">
+          <span>
+            <!-- <i class="ico-twitter ico-gray"></i> -->
+            <i class="ico-twitter bg-dark-sky-blue-two"></i>
+          </span>
+        </a>
+        <a href="https://bit.ly/3pIwsI7" target="_blank">
+          <span>
+            <!-- <i class="ico-instagram ico-gray"></i> -->
+            <i class="ico-instagram bg-purpley-pink"></i>
+          </span>
+        </a>
+      </div>
+      <!-- COMPONENT: SOCIAL ICONS -->
+      <p class="copyright text-warm-grey font-light">Copyright &copy; 2021 ACENT. All rights reserved.</p>
+    </div>
+    <div class="wrapper flex flex-1">
+      <div class="footer__col">
+        <h3 class="heading">Company</h3>
+        <nav class="menu menu--footer">
+          <ul>
+            <li><a href="./about">About Us</a></li>
+            <li><a href="http://support.acent.tech" target="_blank">Contact Us</a></li>
+            <li><a href="https://acent.tech/terms.html" target="_blank">Terms of Use</a></li>
+            <li><a href="https://acent.tech/privacy.html" target="_blank">Privacy Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__col">
+        <h3 class="heading">Other Products</h3>
+        <nav class="menu menu--footer">
+          <ul>
+            <li><a href="https://browseosiris.com/" target="_blank">Osiris Browser</a></li>
+            <li><a href="https://acent.tech/" target="_blank">Acent.tech</a></li>
+            <li><a href="https://dappstore.me/" target="_blank">dAppstore</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- COMPONENT: FOOTER -->

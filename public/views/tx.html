@@ -1,5 +1,5 @@
 <!-- BEGIN PAGE CONTENT-->
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12 portlet light">
       <div class="portlet-body">
 
@@ -50,4 +50,64 @@
     </div>
 
   </div>
-</div>
+</div> -->
+
+<table class="blockdetails table-fixed w-full my-5">
+  <tbody>
+    <tr>
+      <td class="bg-table">Hash</td>
+      <td class="text-warm-grey-two">{{ tx.hash }}</td>
+    </tr>
+    <tr>
+      <td class="bg-table">Block</td>
+      <td class="text-warm-grey-two">
+        <a href="/block/{{ tx.blockNumber }}">{{ tx.blockNumber }}</a>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-table">Time</td>
+      <td class="text-warm-grey-two">
+        {{ tx.datetime | date:'yyyy-MM-dd HH:mm:ss Z' }} ({{ tx.timestamp | timeDuration }} ago)
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-table">From</td>
+      <td>
+        <a href="/addr/{{ tx.from }}">{{ tx.from }}</a>
+      </td>
+      </td>
+    </tr>
+    <tr ng-show="tx.to">
+      <td class="bg-table">To</td>
+      <td class="text-warm-grey-two">
+        <a href="/addr/{{ tx.to }}">{{ tx.to }}</a>
+      </td>
+    </tr>
+    <tr ng-show="tx.creates">
+      <td class="bg-table">Creates</td>
+      <td>
+        <a href="/addr/{{ tx.creates }}">{{ tx.creates }}</a>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-table">Value</td>
+      <td class="text-warm-grey-two">{{ tx.value }} {{ settings.symbol }}</td>
+    </tr>
+    <tr>
+      <td class="bg-table">Nitro Provided</td>
+      <td class="text-warm-grey-two">{{ tx.gas | number }}</td>
+    </tr>
+    <tr>
+      <td class="bg-table">Nitro Price</td>
+      <td class="text-warm-grey-two">{{ tx.gasPrice | number }}</td>
+    </tr>
+    <tr>
+      <td class="bg-table">nonce</td>
+      <td class="text-warm-grey-two">{{ tx.nonce }}</td>
+    </tr>
+    <tr>
+      <td class="bg-table">Input Data</td>
+      <td class="text-warm-grey-two">{{ tx.input }}</td>
+    </tr>
+  </tbody>
+</table>

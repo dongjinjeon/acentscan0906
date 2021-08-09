@@ -1,7 +1,9 @@
-angular.module('BlocksApp').controller('ErrController', function($stateParams, $rootScope, $scope) {
+angular.module('BlocksApp').controller('ErrController', function ($stateParams, $rootScope, $scope) {
 
-    $rootScope.$state.current.data["pageSubTitle"] = $stateParams.hash;
-    $scope.thing = $stateParams.thing;
-    $scope.settings = $rootScope.setup;
+  // $rootScope.$state.current.data["pageSubTitle"] = $stateParams.hash;
+  $rootScope.isHome = false;
+  $scope.thing = $stateParams.thing;
+  $scope.hash = $stateParams.hash;
+  $scope.settings = $rootScope.setup;
 
 })

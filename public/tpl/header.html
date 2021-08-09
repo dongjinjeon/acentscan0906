@@ -1,354 +1,310 @@
-<!-- BEGIN HEADER TOP -->
-<div class="page-header-top">
-    <div class="container">
-    <!-- BEGIN LOGO -->
+<!-- <div class="page-header-top">
+  <div class="container">
     <div class="page-logo">
-        <a href="/">
-            <img ng-show="settings.logo" src="{{settings.logo}}" alt="logo" class="logo-default" />
-        </a>
+      <a href="/">
+        <img ng-show="settings.logo" src="{{settings.logo}}" alt="logo" class="logo-default" />
+      </a>
     </div>
-    <!-- END LOGO -->
-            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler btn btn-sm green-haze btn-outline">MENU</a>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN TOP NAVIGATION MENU -->
-        <div class="top-menu">
-            <ul class="nav navbar-nav pull-right">
-                <li class="dropdown">
-                    <form name="form.searchForm" class="search-form">
-                        <div class="input-group">
-                            <input type="text" name="explorerSearch" class="form-control" placeholder="Search by Address / Txhash / BlockNum / BlockHash" ng-model="form.searchInput" ng-keyup="$event.keyCode == 13 ? searchQuery(form.searchInput) : null">
-                            <span class="input-group-btn">
-                                <a class="btn" ng-click="searchQuery(form.searchInput)">
-                                    <i class="icon-magnifier"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </form>
-                </li>
+    <a href="javascript:;" class="menu-toggler btn btn-sm green-haze btn-outline">MENU</a>
+    <div class="top-menu">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+          <form name="form.searchForm" class="search-form">
+            <div class="input-group">
+              <input type="text" name="explorerSearch" class="input"
+                placeholder="Search by Address / Txhash / BlockNum / BlockHash" ng-model="form.searchInput"
+                ng-keyup="$event.keyCode == 13 ? searchQuery(form.searchInput) : null">
+              <span class="input-group-btn">
+                <a class="btn" ng-click="searchQuery(form.searchInput)">
+                  <i class="icon-magnifier"></i>
+                </a>
+              </span>
+            </div>
+          </form>
+        </li>
 
 
-            </ul>
-        </div>
-        <!-- END TOP NAVIGATION MENU -->
+      </ul>
     </div>
+  </div>
 </div>
-<!-- END HEADER TOP -->
-<!-- BEGIN HEADER MENU -->
 <div class="page-header-menu">
-    <div class="container">
+  <div class="container">
 
-        <!-- BEGIN MEGA MENU -->
-        <div class="hor-menu hor-menu-light">
-            <ul class="nav navbar-nav">
-                <li class="">
-                    <a href="/">HOME</a>
-                </li>
-                <li>
-                    <a href="/accounts">ACCOUNTS</a>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> ACENT ECOSYSTEM
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="https://acent.tech" target="_blank">
-                                <i class="icon-pin"></i> ACENT HOMEPAGE </a>
-                        </li>
-                        <li>
-                          <a href="https://acent.tech/assets/pdf/acent-whitepaper-english.pdf" target="_blank">
-                                <i class="icon-pin"></i> ACENT WHITEPAPER </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> CHART
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                            <a href="/stats/hashrate">
-                                <i class="fa fa-line-chart"></i> HashRate Growth </a>
-                        </li>
-                        <li>
-                            <a href="/stats/miner_hashrate">
-                                <i class="fa fa-line-chart"></i> Miner Distribution </a>
-                        </li>
-                        <li>
-                            <a href="/stats/difficulty">
-                                <i class="fa fa-line-chart"></i> Difficulty Chart </a>
-                        </li>
-                        <li>
-                            <a href="/stats/blocktime">
-                                <i class="fa fa-line-chart"></i> Blocktime Chart </a>
-                        </li>
-                        <li>
-                            <a href="/stats/The_bomb_chart">
-                                <i class="fa fa-line-chart"></i> The bomb chart </a>
-                        </li>
-                        <li>
-                            <a href="/stats/supply">
-                                <i class="fa fa-line-chart"></i> Total Supply chart </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> FAUCET
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="http://3.36.135.56:3001" target="_blank">
-                                <i class="icon-pin"></i> ACENT testnet Faucet</a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                                <i class="icon-pin"></i> ACENT Pool </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                                <i class="icon-pin"></i> Bitcoin Mining </a>
-                        </li>
-                        <li>
-                          <a href="#" target="_blank">
-                                <i class="icon-pin"></i> Testnet Mining </a>
-                        </li>
-                        <li>
-                          <a href="https://www.coincalculators.io" target="_blank">
-                                <i class="icon-pin"></i> Coin Calculators </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> dAppstore
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="https://dappstore.me/" target="_blank">
-                                <i class="icon-pin"></i> homepage </a>
-                        </li>
-                        <li>
-                          <a href="https://play.dappstore.me/games" target="_blank">
-                                <i class="icon-pin"></i> Games </a>
-                        </li>
-                        <li>
-                          <a href="https://play.dappstore.me/top-defi-charts" target="_blank">
-                                <i class="icon-pin"></i> Defi </a>
-                        </li>
-                        <li>
-                          <a href="https://play.dappstore.me/top-nft-charts" target="_blank">
-                                <i class="icon-pin"></i> NFT </a>
-                        </li>
-                        <li>
-                          <a href="https://dappstore.me/dappx/" target="_blank">
-                                <i class="icon-pin"></i> dAPPX </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> Wallet
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="https://browseosiris.com/" target="_blank">
-                                <i class="icon-pin"></i> Osiris Browser </a>
-                        </li>
-                        <li>
-                          <a href="https://#" target="_blank">
-                                <i class="icon-pin"></i> Acent coion wallet  </a>
-                        </li>
-                        <li>
-                          <a href="https://#" target="_blank">
-                                <i class="icon-pin"></i> Telegram Wallet </a>
-                        </li>
-                        <li>
-                          <a href="https://#" target="_blank">
-                                <i class="icon-pin"></i> Kakaotalk wallet </a>
-                        </li>
-                        <li>
-                          <a href="https:/#/" target="_blank">
-                                <i class="icon-pin"></i>  Slack Wallet </a>
-                        </li>
-                        <li>
-                          <a href="https://#" target="_blank">
-                                <i class="icon-pin"></i> Discord Wallet </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> Community
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="#" target="_blank">
-                              <i class="fa fa-group"></i>
-                              <span class="title" data-toggle="tooltip" title=" Telegram"> Telegram </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://#" target="_blank">
-                              <i class="fa fa-group"></i>
-                              <span class="title" data-toggle="tooltip" title=" Discord"> Discord </span>
-                          </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#"  target="_blank">
-                                <i class="fa fa-bar-chart"></i> Sitemap </a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- <li class="menu-dropdown mega-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="/token" class="dropdown-toggle"> Tokens
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu" style="min-width: 410px">
-                        <li>
-                            <div class="mega-menu-content">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul class="mega-menu-submenu">
-                                            <li>
-                                                <a href="/token/0x085fb4f24031eaedbc2b611aa528f22343eb52db" class="iconify">
-                                                    <i class="icon-pin"></i> BitEther</a>
-                                            </li>
-                                            <li>
-                                                <a href="/dao" class="iconify">
-                                                    <i class="icon-trash"></i> TheDAO</a>
-                                            </li>
-                                            <li>
-                                                <a href="/token" class="iconify">
-                                                    <i class="icon-puzzle"></i> View All Tokens </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="mega-menu-submenu">
-                                            <li>
-                                                <a href="/" class="iconify">
-                                                    <i class="icon-paper-clip"></i> View Contracts (N/A)</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li class="menu-dropdown mega-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle"> Stats
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="mega-menu-content">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="mega-menu-submenu">
-                                            <li>
-                                                <a href="/stats/hashrate">
-                                                    <i class="fa fa-line-chart"></i> HashRate Growth Chart </a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/miner_hashrate">
-                                                    <i class="fa fa-line-chart"></i> Miner Distribution Chart</a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/difficulty">
-                                                    <i class="fa fa-line-chart"></i> Difficulty Chart</a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/blocktime">
-                                                    <i class="fa fa-line-chart"></i> Blocktime Chart</a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/tx">
-                                                    <i class="fa fa-line-chart"></i> Transaction Chart</a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/supply">
-                                                    <i class="fa fa-line-chart"></i> Total Supply</a>
-                                            </li>
-                                            <li>
-                                                <a href="/stats/The_bomb_chart">
-                                                    <i class="fa fa-line-chart"></i> The bomb chart</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> Misc
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                            <a href="/">
-                                <i class="icon-check"></i> Verify Contract (N/A)</a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                <i class="icon-refresh"></i>
-                                <span class="title">Broadcast TXN (N/A)</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li class="menu-dropdown classic-menu-dropdown ">
-                    <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> COMMUNITY
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-left">
-                        <li>
-                          <a href="https://forum.ethereumclassic.org" target="_blank">
-                              <i class="fa fa-group"></i>
-                              <span class="title" data-toggle="tooltip" title="Community Chat"> The Forum</span>
-                          </a>
-                        </li>
-                        <li>
-                            <a href="https://tokenmint.io" target="_blank">
-                                <i class="fa fa-leaf"></i>
-                                <span class="title" data-toggle="tooltip" title="ERC223 Token Factory" > TokenMint.io</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=" https://ethereumproject.github.io/etherwallet/ " target="_blank">
-                                <i class="fa fa-folder-open"></i>
-                                <span class="title" data-toggle="tooltip" title="Client Side JS ETC Wallet"> ClassicEtherWallet.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://etcstats.net" target="_blank">
-                                <i class="fa fa-bar-chart"></i>
-                                <span class="title" data-toggle="tooltip" title="Mainnet Stats"> Live Network Stats </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://statebot.info" target="_blank">
-                                <i class="fa fa-android"></i>
-                                <span class="title" data-toggle="tooltip" title="JSON state dumps for analysis"> Statebot.io </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://teststats.epool.io/" target="_blank">
-                                <i class="fa fa-bar-chart"></i>
-                                <span class="title" data-toggle="tooltip" title="Live Testnet Stats">Morden network stats </span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li> -->
-            </ul>
-        </div>
-        <!-- END MEGA MENU -->
+    <div class="hor-menu hor-menu-light">
+      <ul class="nav navbar-nav">
+        <li class="">
+          <a href="/">HOME</a>
+        </li>
+        <li>
+          <a href="/accounts">ACCOUNTS</a>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> ACENT
+            ECOSYSTEM
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="https://acent.tech" target="_blank">
+                <i class="icon-pin"></i> ACENT HOMEPAGE </a>
+            </li>
+            <li>
+              <a href="https://acent.tech/assets/pdf/acent-whitepaper-english.pdf" target="_blank">
+                <i class="icon-pin"></i> ACENT WHITEPAPER </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> CHART
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="/stats/hashrate">
+                <i class="fa fa-line-chart"></i> HashRate Growth </a>
+            </li>
+            <li>
+              <a href="/stats/miner_hashrate">
+                <i class="fa fa-line-chart"></i> Miner Distribution </a>
+            </li>
+            <li>
+              <a href="/stats/difficulty">
+                <i class="fa fa-line-chart"></i> Difficulty Chart </a>
+            </li>
+            <li>
+              <a href="/stats/blocktime">
+                <i class="fa fa-line-chart"></i> Blocktime Chart </a>
+            </li>
+            <li>
+              <a href="/stats/The_bomb_chart">
+                <i class="fa fa-line-chart"></i> The bomb chart </a>
+            </li>
+            <li>
+              <a href="/stats/supply">
+                <i class="fa fa-line-chart"></i> Total Supply chart </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> FAUCET
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="http://3.36.135.56:3001" target="_blank">
+                <i class="icon-pin"></i> ACENT testnet Faucet</a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="icon-pin"></i> ACENT Pool </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="icon-pin"></i> Bitcoin Mining </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="icon-pin"></i> Testnet Mining </a>
+            </li>
+            <li>
+              <a href="https://www.coincalculators.io" target="_blank">
+                <i class="icon-pin"></i> Coin Calculators </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+            dAppstore
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="https://dappstore.me/" target="_blank">
+                <i class="icon-pin"></i> homepage </a>
+            </li>
+            <li>
+              <a href="https://play.dappstore.me/games" target="_blank">
+                <i class="icon-pin"></i> Games </a>
+            </li>
+            <li>
+              <a href="https://play.dappstore.me/top-defi-charts" target="_blank">
+                <i class="icon-pin"></i> Defi </a>
+            </li>
+            <li>
+              <a href="https://play.dappstore.me/top-nft-charts" target="_blank">
+                <i class="icon-pin"></i> NFT </a>
+            </li>
+            <li>
+              <a href="https://dappstore.me/dappx/" target="_blank">
+                <i class="icon-pin"></i> dAPPX </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;"> Wallet
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="https://browseosiris.com/" target="_blank">
+                <i class="icon-pin"></i> Osiris Browser </a>
+            </li>
+            <li>
+              <a href="https://#" target="_blank">
+                <i class="icon-pin"></i> Acent coion wallet </a>
+            </li>
+            <li>
+              <a href="https://#" target="_blank">
+                <i class="icon-pin"></i> Telegram Wallet </a>
+            </li>
+            <li>
+              <a href="https://#" target="_blank">
+                <i class="icon-pin"></i> Kakaotalk wallet </a>
+            </li>
+            <li>
+              <a href="https:/#/" target="_blank">
+                <i class="icon-pin"></i> Slack Wallet </a>
+            </li>
+            <li>
+              <a href="https://#" target="_blank">
+                <i class="icon-pin"></i> Discord Wallet </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu-dropdown classic-menu-dropdown ">
+          <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+            Community
+            <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-left">
+            <li>
+              <a href="#" target="_blank">
+                <i class="fa fa-group"></i>
+                <span class="title" data-toggle="tooltip" title=" Telegram"> Telegram </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://#" target="_blank">
+                <i class="fa fa-group"></i>
+                <span class="title" data-toggle="tooltip" title=" Discord"> Discord </span>
+              </a>
+            </li>
+            <hr>
+            <li>
+              <a href="#" target="_blank">
+                <i class="fa fa-bar-chart"></i> Sitemap </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-</div>
-<!-- END HEADER INNER -->
+  </div>
+</div> -->
+
+<!-- COMPONENT: HEADER -->
+<header class="header bg-white h-20">
+  <div class="container">
+    <div class="branding h-full">
+      <a href="/" class="h-full flex items-center">
+        <img
+          src="data:image/png;base64,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"
+          alt="" />
+      </a>
+    </div>
+    <div class="menu-container h-full flex">
+      <nav class="menu w-680 h-full flex flex-col">
+        <ul class="inline-flex h-full">
+          <li>
+            <a href="#" class="group-hover:text-water-blue">ACENT Ecosystem</a>
+            <ul class="dropdown min-h-dropdown w-dropdown group-hover:bg-off-white group-hover:border-water-blue">
+              <a href="/" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  ACENT Homepage
+                </li>
+              </a>
+              <a href="https://acent.tech/assets/pdf/acent-whitepaper-english.pdf"
+                class="duration-200 hover:text-water-blue" target="_blank">
+                <li class="py-2.5 text-center">
+                  ACENT Whitepaper
+                </li>
+              </a>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="group-hover:text-water-blue">Charts</a>
+            <ul class="dropdown min-h-dropdown w-dropdown group-hover:bg-off-white group-hover:border-water-blue">
+              <a href="/stats/miner_hashrate" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Miner Distribution
+                </li>
+              </a>
+              <a href="/stats/difficulty" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Difficulty Chart
+                </li>
+              </a>
+              <a href="/stats/supply" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Total Supply Chart
+                </li>
+              </a>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="group-hover:text-water-blue">Mining</a>
+            <ul class="dropdown min-h-dropdown w-dropdown group-hover:bg-off-white group-hover:border-water-blue">
+              <a href="http://3.36.135.56:3001" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  ACENT Testnet Faucet
+                </li>
+              </a>
+              <a href="https://www.coincalculators.io/" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Coin Calculation
+                </li>
+              </a>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="group-hover:text-water-blue">Community</a>
+            <ul class="dropdown min-h-dropdown w-dropdown group-hover:bg-off-white group-hover:border-water-blue">
+              <a href="https://t.me/AcentChannel" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Telegram 1
+                </li>
+              </a>
+              <a href="https://t.me/AcentOfficialChat" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Telegram 2
+                </li>
+              </a>
+              <a href="https://bit.ly/ACE_Medium" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Medium
+                </li>
+              </a>
+              <a href="https://bit.ly/2UCSX3b" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Twitter
+                </li>
+              </a>
+              <a href="https://bit.ly/3pIwsI7" target="_blank" class="duration-200 hover:text-water-blue">
+                <li class="py-2.5 text-center">
+                  Instagram
+                </li>
+              </a>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="logo-access">
+        <p>Access Acent Mainnet Via</p>
+        <img
+          src="data:image/png;base64,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"
+          alt="" />
+      </div>
+    </div>
+  </div>
+</header>
+<!-- COMPONENT: HEADER -->

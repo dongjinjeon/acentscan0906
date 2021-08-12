@@ -78,31 +78,31 @@
   <div class="data-block mr-2 shadow-md">
     <h2 class="data-block__heading" ng-click="reloadBlocks()">Latest Blocks</h2>
     <div class="data-block__entries scrollable" ng-class="{ 'bg-water-blue-two': t.number > last_block }">
-      <div class="data-block__entry" ng-repeat="t in latest_blocks track by $index">
+      <div class="data-block__entry" ng-repeat="b in latest_blocks track by $index">
         <div class="data-block__entry-label">Bk</div>
         <div class="data-block__entry-info">
           <p>
-            <a href="/block/{{ t.number }}">{{ t.number }}</a>
-            <span ng-show="t.number > last_block">New</span>
+            <a href="/block/{{ b.number }}">{{ b.number }}</a>
+            <!-- <span ng-show="t.number > last_block">New</span> -->
             <br />
-            <small>{{ t.timestamp | timeDuration }} ago</small>
+            <small>{{ b.timestamp | timeDuration }} ago</small>
           </p>
         </div>
         <div class="data-block__entry-info">
           <p>
-            <a href="/addr/{{ t.miner }}">
-              &#9488;&#9496;{{ t.extraData.substr(2) }}
+            <a href="/addr/{{ b.miner }}">
+              &#9488;&#9496;{{ b.extraData.substr(2) }}
             </a>
             <br />
-            by <a href="/addr/{{ t.miner }}">{{ t.miner }}</a>
+            by <a href="/addr/{{ b.miner }}">{{ b.miner }}</a>
           </p>
         </div>
         <div class="data-block__entry-reward">
-          <p>{{ t.txn }} TXNS</p>
+          <p>{{ b.txn }} TXNS</p>
         </div>
       </div>
     </div>
-    <a href="#" class="data-block__btn">View all blocks</a>
+    <a href="/blocks" class="data-block__btn">View all blocks</a>
   </div>
 
   <div class="data-block ml-2 shadow-md">
@@ -129,7 +129,7 @@
         </div>
       </div>
     </div>
-    <a href="#" class="data-block__btn">View all transactions</a>
+    <a href="/txs" class="data-block__btn">View all transactions</a>
   </div>
 </div>
 <!-- COMPONENT: DATA BLOCKS -->

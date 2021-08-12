@@ -351,15 +351,6 @@ footer .menu--footer a {
   @apply text-water-blue-two cursor-pointer;
 }
 
-/* miner table */
-.minerdetails table tr {
-  @apply border-b border-border;
-}
-
-.minerdetails table td {
-  @apply py-2;
-}
-
 ::-webkit-scrollbar {
   width: 4px;
   height: 6px;
@@ -544,8 +535,9 @@ footer .menu--footer a {
   display: block;
 }
 
+/* datatable */
 #datatable td {
-  @apply truncate;
+  @apply truncate py-2;
 }
 
 #datatable tr {
@@ -565,7 +557,7 @@ footer .menu--footer a {
 }
 
 #datatable_paginate, #datatable_paginate > span {
-  @apply flex;
+  @apply flex items-center;
 }
 
 #datatable_paginate .paginate_button {

@@ -9,18 +9,18 @@ BlocksApp.directive('ngSpinnerBar', ['$rootScope', '$transitions',
       link: function (scope, element, attrs) {
         const main = document.getElementById('main');
         // by defult hide the spinner bar
-        element.addClass('invisible opacity-0'); // hide spinner bar by default
+        element.addClass('invisible opacity-0');
 
         // display the spinner bar whenever the route changes(the content part started loading)
         $transitions.onStart({}, function (trans) {
-          element.removeClass('invisible opacity-0'); // show spinner bar
+          element.removeClass('invisible opacity-0');
           Layout.closeMainMenu();
         });
 
         // hide the spinner bar on rounte change success(after the content loaded)
         $transitions.onSuccess({}, function (trans) {
           setTimeout(() => {
-            element.addClass('invisible opacity-0'); // hide spinner bar
+            element.addClass('invisible opacity-0');
           }, 800);
           $('body').removeClass('page-on-load'); // remove page loading indicator
           Layout.setMainMenuActiveLink('match'); // activate selected link in the sidebar menu
@@ -34,7 +34,7 @@ BlocksApp.directive('ngSpinnerBar', ['$rootScope', '$transitions',
         // handle errors
         $transitions.onError({}, function () {
           setTimeout(() => {
-            element.addClass('invisible opacity-0'); // hide spinner bar
+            element.addClass('invisible opacity-0');
           }, 800);
         });
       }

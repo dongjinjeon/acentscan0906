@@ -30063,19 +30063,6 @@ footer .menu--footer a {
   color: rgba(14, 125, 214, var(--tw-text-opacity));
 }
 
-/* miner table */
-
-.minerdetails table tr {
-  border-bottom-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgba(232, 235, 238, var(--tw-border-opacity));
-}
-
-.minerdetails table td {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 ::-webkit-scrollbar {
   width: 4px;
   height: 6px;
@@ -30268,10 +30255,14 @@ footer .menu--footer a {
   display: block;
 }
 
+/* datatable */
+
 #datatable td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #datatable tr {
@@ -30322,6 +30313,7 @@ footer .menu--footer a {
 
 #datatable_paginate, #datatable_paginate > span {
   display: flex;
+  align-items: center;
 }
 
 #datatable_paginate .paginate_button {

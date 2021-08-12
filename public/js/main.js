@@ -210,6 +210,25 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       }
     })
 
+    .state('blocks', {
+      url: "/blocks",
+      templateUrl: "views/blocks.html",
+      data: { pageTitle: 'Blocks' },
+      controller: "BlocksController",
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: 'BlocksApp',
+            insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+            files: [
+              '/js/controllers/BlocksController.js',
+              'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
+            ]
+          });
+        }]
+      }
+    })
+
     .state('uncle', {
       url: "/uncle/*number",
       templateUrl: "views/block.html",
@@ -240,6 +259,24 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
             files: [
               '/js/controllers/TxController.js'
+            ]
+          });
+        }]
+      }
+    })
+    .state('txs', {
+      url: "/txs",
+      templateUrl: "views/txs.html",
+      data: { pageTitle: 'Transactions' },
+      controller: "TxsController",
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: 'BlocksApp',
+            insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+            files: [
+              '/js/controllers/TxsController.js',
+              'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
             ]
           });
         }]

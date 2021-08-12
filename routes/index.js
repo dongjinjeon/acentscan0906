@@ -401,10 +401,56 @@ var sendTxs = function (lim, res) {
     });
 }
 
+const allTxs = function (lim, res) {
+  try {
+    Transaction.find({})
+      .select([
+        'hash',
+        'blockNumber',
+        'from',
+        'to',
+        'value',
+        'gas',
+        'timestamp',
+      ])
+      .sort({ blockNumber: -1 })
+      .exec(function (err, data) {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+  } catch (err) {
+    throw err;
+  }
+};
+
+const allBlocks = function (lim, res) {
+  try {
+    Block.find({})
+      .select([
+        'hash',
+        'number',
+        'miner',
+        'parentHash',
+        'difficulty',
+        'totalDifficulty',
+        'timestamp',
+      ])
+      .sort({ number: -1 })
+      .exec(function (err, data) {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+  } catch (err) {
+    throw err;
+  }
+};
+
 const MAX_ENTRIES = 10;
 
 const DATA_ACTIONS = {
   "latest_blocks": sendBlocks,
-  "latest_txs": sendTxs
-}
+  "latest_txs": sendTxs,
+  "all_txs": allTxs,
+  "all_blocks": allBlocks,
+};
 

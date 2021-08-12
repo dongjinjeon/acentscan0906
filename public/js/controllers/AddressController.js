@@ -40,45 +40,55 @@ angular.module('BlocksApp').controller('AddressController', function ($statePara
         data.addr = $scope.addrHash;
         data.count = $scope.addr.count;
         $http.post('/addr', data).then(function (resp) {
-          // save data
-          $scope.data = resp.data;
           // check $scope.records* if available.
-          resp.data.recordsTotal = $scope.recordsTotal ? $scope.recordsTotal : resp.data.recordsTotal;
-          resp.data.recordsFiltered = $scope.recordsFiltered ? $scope.recordsFiltered : resp.data.recordsFiltered;
+          // resp.data.recordsTotal = $scope.recordsTotal ? $scope.recordsTotal : resp.data.recordsTotal;
+          // resp.data.recordsFiltered = $scope.recordsFiltered ? $scope.recordsFiltered : resp.data.recordsFiltered;
+
+          // remove nitro
+          // resp.data.data = resp.data.data.filter(x => delete x[5]);
+          // console.log(resp.data)
+
           callback(resp.data);
           callBacks();
+
+          // save data
+          $scope.addr.count = resp.data.data.length;
+          $scope.addr.mined = parseInt(resp.data.mined);
         });
 
         // get mined, recordsTotal counter only once.
-        if (data.draw > 1)
-          return;
+        // if (data.draw) return;
 
-        $http.post('/addr_count', data).then(function (resp) {
-          $scope.addr.count = resp.data.recordsTotal;
-          $scope.addr.mined = parseInt(resp.data.mined);
+        // $http.post('/addr_count', data).then(function (resp) {
+        //   $scope.addr.count = resp.data.recordsTotal;
+        //   $scope.addr.mined = parseInt(resp.data.mined);
 
-          data.count = resp.data.recordsTotal;
+        // data.count = resp.data.recordsTotal;
 
-          // set $scope.records*
-          $scope.recordsTotal = resp.data.recordsTotal;
-          $scope.recordsFiltered = resp.data.recordsFiltered;
-          // draw table if $scope.data available.
-          if ($scope.data) {
-            $scope.data.recordsTotal = resp.data.recordsTotal;
-            $scope.data.recordsFiltered = resp.data.recordsFiltered;
-            callback($scope.data);
-          }
-        });
+        // set $scope.records*
+        // $scope.recordsTotal = resp.data.recordsTotal;
+        // $scope.recordsFiltered = resp.data.recordsFiltered;
+        // draw table if $scope.data available.
+        // if ($scope.data) {
+        //   $scope.data.recordsTotal = resp.data.recordsTotal;
+        //   $scope.data.recordsFiltered = resp.data.recordsFiltered;
+        // }
+        // });
       },
 
       "dom": 'frt<"flex justify-between items-center text-warm-grey-two"lpi>',
       "pagingType": "full_numbers",
-      "lengthMenu": [
-        [5, 10, 20, 50, 100],
-        [5, 10, 20, 50, 100]
-      ],
+      "lengthMenu": [5, 10, 20, 50, 100],
+      "language": {
+        "paginate": {
+          "first": "<<",
+          "previous": "<",
+          "next": ">",
+          "last": ">>",
+        }
+      },
       "order": [
-        [6, "desc"]
+        [6, "asc"]
       ],
       "pageLength": 20,
       "columnDefs": [
@@ -93,6 +103,10 @@ angular.module('BlocksApp').controller('AddressController', function ($statePara
         {
           "render": data => td('tx', data),
           "targets": 0,
+        },
+        {
+          "render": data => td('block', data),
+          "targets": 1,
         },
         {
           "render": (data) => {
@@ -211,8 +225,10 @@ angular.module('BlocksApp').controller('AddressController', function ($statePara
     </td>`;
 
   let callBacks = () => {
-    // Replace label and placeholder
+    // Add placeholder
     $('#datatable_filter').find('input').attr('placeholder', 'Search');
+
+    // Remove label
     $('#datatable_filter')
       .find('label')
       .contents()

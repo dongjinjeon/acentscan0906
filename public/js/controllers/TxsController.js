@@ -41,6 +41,10 @@ angular.module('BlocksApp').controller('TxsController', function ($stateParams, 
       ],
       columnDefs: [
         {
+          orderable: false,
+          targets: [0, 2, 3]
+        },
+        {
           targets: 6,
           render: function (data, type) {
             if (type === 'display' || type === 'filter') {

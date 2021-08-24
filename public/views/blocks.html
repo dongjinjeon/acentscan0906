@@ -12,7 +12,8 @@
     </div>
   </div>
 
-  <table id="datatable" class="table-fixed my-3 w-full border-b-0" ng-class="{ hidden: loading }">
+  <table id="datatable" class="table-fixed my-3 w-full border-b-0"
+    ng-class="{ hidden: loading }">
     <thead class="bg-pale-grey">
       <tr>
         <th class="w-2/12 py-2">Hash</th>
@@ -46,9 +47,9 @@
             {{ b.parentHash }}
           </a>
         </td>
-        <td>{{ b.difficulty }}</td>
-        <td>{{ b.totalDifficulty }}</td>
-        <td>{{ b.timestamp }}</td>
+        <td title="{{ b.difficulty }}">{{ b.difficulty }}</td>
+        <td title="{{ b.totalDifficulty }}">{{ b.totalDifficulty }}</td>
+        <td title="{{ b.timestamp }}">{{ b.timestamp }}</td>
       </tr>
     </tbody>
   </table>

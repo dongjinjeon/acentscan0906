@@ -4,7 +4,7 @@ module.exports = {
     './src/**/*.js',
   ],
   darkMode: false, // or 'media' or 'class'
-  important: true,
+  // important: true,
   theme: {
     colors: {
       'white': '#ffffff',
@@ -43,10 +43,11 @@ module.exports = {
     },
     extend: {
       width: {
+        '150': '150px',
         '200': '200px',
         '680': '680px',
         'dropdown': `calc(680px/4)`,
-        '750': '750px',
+        '800': '800px',
       },
       height: {
         'masthead': '200px',

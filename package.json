@@ -6,7 +6,8 @@
   "repository": "https://github.com/ethereumproject/explorer",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"node tools/sync.js \" \"node app.js\" \"tailwindcss -i ./public/css/tw-custom.css -o ./public/css/tw.css --watch \" ",
+    "start": "concurrently \"node tools/sync.js \" \"node app.js\" ",
+    "dev": "concurrently \"node tools/sync.js \" \"node app.js\" \"tailwindcss -i ./public/css/tw-custom.css -o ./public/css/tw.css --watch \" ",
     "build-css": "tailwindcss -i ./public/css/tw-custom.css -o ./public/css/tw.css",
     "pretest": "copyfiles app.js app/  ",
     "test": "./node_modules/.bin/mocha --reporter spec  "

@@ -45,6 +45,10 @@ module.exports = function (app) {
   app.post('/block', getBlock);
   app.post('/data', getData);
 
+  app.post('/searchTxs', searchTxs);
+  app.post('/searchBlocks', searchBlocks);
+  app.post('/searchAddrs', searchAddrs);
+
   app.post('/daorelay', DAO);
   app.post('/tokenrelay', Token);
   app.post('/web3relay', web3relay.data);
@@ -304,6 +308,7 @@ var getTotalSupply = function (req, res) {
 
 var getTx = function (req, res) {
   var tx = req.body.tx.toLowerCase();
+  console.log('getTx', tx);
   var txFind = Block.findOne({ "transactions.hash": tx }, "transactions timestamp")
     .lean(true);
   txFind.exec(function (err, doc) {
@@ -319,6 +324,7 @@ var getTx = function (req, res) {
     }
   });
 };
+
 /*
   Fetch data from DB
 */
@@ -336,6 +342,74 @@ var getData = function (req, res) {
   } else {
     console.error("Invalid Request: " + action)
     res.status(400).send();
+  }
+};
+
+const searchTxs = function (req, res) {
+  const param = req.body.data.toLowerCase();
+
+  try {
+    Transaction
+      .find({
+        hash: {
+          $regex: `.*${param}.*`
+        }
+      })
+      .select(['hash'])
+      .sort('-timestamp')
+      .limit(10)
+      .exec(function (err, data) {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+  } catch (err) {
+    throw err;
+  }
+};
+
+const searchBlocks = function (req, res) {
+  const param = req.body.data.toLowerCase();
+  const re = new RegExp(param, 'gi');
+
+  try {
+    Block
+      .find({ $where: `!!this.number.toString().match(${re})` })
+      .select(['number'])
+      .sort('-timestamp')
+      .limit(10)
+      .exec(function (err, data) {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+  } catch (err) {
+    throw err;
+  }
+};
+
+const searchAddrs = function (req, res) {
+  const param = req.body.data.toLowerCase();
+
+  try {
+    Transaction
+      .find({
+        $or: [{
+          to: {
+            $regex: `.*${param}.*`
+          }
+        },
+        {
+          from: {
+            $regex: `.*${param}.*`
+          }
+        }]
+      })
+      .select(['to', 'from'])
+      .exec(function (err, data) {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+  } catch (err) {
+    throw err;
   }
 };
 
@@ -453,4 +527,3 @@ const DATA_ACTIONS = {
   "all_txs": allTxs,
   "all_blocks": allBlocks,
 };
-

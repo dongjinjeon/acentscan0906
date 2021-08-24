@@ -8,6 +8,23 @@ angular.module('BlocksApp').controller('HomeController', function ($rootScope, $
 
   $rootScope.isHome = true;
 
+  $scope.reloadCGData = function () {
+    $scope.cgDataLoading = true;
+
+    $http.get('https://api.coingecko.com/api/v3/coins/acent').then(resp => {
+      $scope.cgData = resp.data;
+      console.log($scope.cgData.market_data.current_price.usd)
+      if (Math.sign(resp.data.market_data.price_change_percentage_24h) === -1) {
+        $scope.isBull = false;
+      } else {
+        $scope.isBull = true;
+      }
+      $scope.cgDataLoading = false;
+    }).catch((err) => {
+      // console.log('API call error:', err.message);
+      $scope.cgDataLoading = false;
+    });
+  }
   $scope.reloadBlocks = function () {
     $scope.blockLoading = true;
 
@@ -38,11 +55,13 @@ angular.module('BlocksApp').controller('HomeController', function ($rootScope, $
 
   $scope.reloadBlocks();
   $scope.reloadTransactions();
+  $scope.reloadCGData();
 
   setInterval(() => {
     $scope.reloadBlocks();
     $scope.reloadTransactions();
-  }, 10000);
+    $scope.reloadCGData();
+  }, 60000);
   $scope.settings = $rootScope.setup;
 })
   .directive('simpleSummaryStats', function ($http) {

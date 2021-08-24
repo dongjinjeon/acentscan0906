@@ -67,7 +67,8 @@
     <tr>
       <td class="bg-table">Time</td>
       <td class="text-warm-grey-two">
-        {{ tx.datetime | date:'yyyy-MM-dd HH:mm:ss Z' }} ({{ tx.timestamp | timeDuration }} ago)
+        {{ tx.datetime | date:'yyyy-MM-dd HH:mm:ss Z' }} ({{ tx.timestamp |
+        timeDuration }} ago)
       </td>
     </tr>
     <tr>
@@ -107,7 +108,9 @@
     </tr>
     <tr>
       <td class="bg-table">Input Data</td>
-      <td class="text-warm-grey-two">{{ tx.input }}</td>
+      <td class="text-warm-grey-two inputdata" title="{{ tx.input }}">
+        {{ tx.input }}
+      </td>
     </tr>
   </tbody>
 </table>

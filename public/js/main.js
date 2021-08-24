@@ -71,39 +71,128 @@ BlocksApp.controller('PageHeadController', ['$scope', 'setupObj', function ($sco
   });
 }]);
 /* Search Bar */
-BlocksApp.controller('SearchController', ['$scope', '$location', 'setupObj', function ($scope, $location, setupObj) {
+BlocksApp.controller('SearchController', ['$scope', '$location', 'setupObj', '$http', function ($scope, $location, setupObj, $http) {
   $scope.$on('$includeContentLoaded', function () {
 
   });
 
-  $scope.form = {};
-  $scope.searchQuery = function (s) {
-    var search = s.toLowerCase();
+  $scope.$on('$locationChangeSuccess', function () {
+    $scope.hideOptions();
+  });
 
-    $scope.form.searchInput = '';
+  $scope.form = {};
+  $scope.loading = false;
+  $scope.addrLoading = false;
+  $scope.txLoading = false;
+  $scope.blockLoading = false;
+  $scope.displayOptions = false;
+  $scope.getDataDone = false;
+
+  $scope.handleChange = (param) => {
+    $scope.clear();
+    param
+      ? $scope.searchQuery(param)
+      : $scope.hideOptions();
+  };
+
+  $scope.searchQuery = _.debounce(function (search) {
+    $scope.displayOptions = true;
+
     $scope.form.searchForm.$setPristine();
     $scope.form.searchForm.$setUntouched();
 
-    switch (!!$scope.form.searchFilter) {
-      case true:
-        $location.path(`/${$scope.form.searchFilter}/` + search);
-        break;
+    const searchFilter = $scope.form.searchFilter;
 
-      default:
-        if (isAddress(search))
-          $location.path('/addr/' + search);
-        else if (isTransaction(search))
-          $location.path('/tx/' + search);
-        else if (!isNaN(search))
-          $location.path('/block/' + search);
-        else
-          $scope.form.searchInput = search;
-        break;
+    if (!searchFilter || searchFilter === 'addr') {
+      $scope.addrLoading = true;
+
+      $http
+        .post('/searchAddrs', { data: search })
+        .then(function (resp) {
+          if (resp.data.length) {
+            $scope.data.addrs = [
+              ...new Set(
+                resp.data.map(x => x.to?.match(search) ? x.to : x.from)
+              )
+            ]
+          }
+          $scope.addrLoading = false;
+          $scope.checkAllLoading();
+        });
     }
-  }
+
+    if (!searchFilter || searchFilter === 'tx') {
+      $scope.txLoading = true;
+
+      $http
+        .post('/searchTxs', { data: search })
+        .then(function (resp) {
+          if (resp.data.length) {
+            $scope.data.txs = [
+              ...resp.data.map(x => x.hash)
+            ]
+          }
+          $scope.txLoading = false;
+          $scope.checkAllLoading();
+        });
+    }
+
+    if (!searchFilter || searchFilter === 'block') {
+      $scope.blockLoading = true;
+
+      $http
+        .post('/searchBlocks', { data: search })
+        .then(function (resp) {
+          if (resp.data.length) {
+            $scope.data.blocks = [
+              ...resp.data.map(x => x.number)
+            ]
+          }
+          $scope.blockLoading = false;
+          $scope.checkAllLoading();
+        });
+    }
+  }, 400);
 
   $scope.filter = (val) => {
     $scope.form.searchFilter = val;
+  };
+
+  $scope.clear = () => {
+    $scope.data = {
+      addrs: [],
+      txs: [],
+      blocks: [],
+    };
+    $scope.loading = true;
+    $scope.getDataDone = false;
+  };
+
+  $scope.checkAllLoading = () => {
+    if (!$scope.addrLoading && !$scope.txLoading && !$scope.blockLoading) {
+      $scope.loading = false;
+      $scope.getDataDone = true;
+    }
+  };
+
+  $scope.hideOptions = () => {
+    $scope.displayOptions = false;
+    window.removeEventListener("click", $scope.onClickOutside);
+  };
+
+  $scope.showOptions = () => {
+    if ($scope.form.searchInput) {
+      $scope.displayOptions = true;
+    }
+
+    window.addEventListener("click", $scope.onClickOutside);
+  };
+
+  $scope.onClickOutside = (e) => {
+    if (!e.target.className.includes('filters-form')) {
+      $scope.hideOptions();
+      $scope.$digest();
+    }
   };
 
   setupObj.then(function (res) {
@@ -155,17 +244,11 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
             files: [
               '/js/controllers/AddressController.js',
+              // 'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
               // '/plugins/datatables/datatables.min.css',
               // '/plugins/datatables/datatables.bootstrap.css',
               // '/plugins/datatables/datatables.all.min.js',
-              // '/plugins/datatables/datatable.min.js',
-
-              // 'https://code.jquery.com/jquery-3.5.1.js',
-              // 'https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js',
-              // 'https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css',
-
-              // 'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css',
-              'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
+              '/plugins/datatables/datatable.min.js',
             ]
           });
         }]

@@ -77,13 +77,14 @@
 <div class="data-blocks w-full grid grid-cols-2">
   <div class="data-block mr-2 shadow-md">
     <h2 class="data-block__heading" ng-click="reloadBlocks()">Latest Blocks</h2>
-    <div class="data-block__entries scrollable" ng-class="{ 'bg-water-blue-two': t.number > last_block }">
-      <div class="data-block__entry" ng-repeat="b in latest_blocks track by $index">
+    <div class="data-block__entries scrollable"
+      ng-class="{ 'bg-water-blue-two': t.number > last_block }">
+      <div class="data-block__entry"
+        ng-repeat="b in latest_blocks track by $index">
         <div class="data-block__entry-label">Bk</div>
         <div class="data-block__entry-info">
           <p>
             <a href="/block/{{ b.number }}">{{ b.number }}</a>
-            <!-- <span ng-show="t.number > last_block">New</span> -->
             <br />
             <small>{{ b.timestamp | timeDuration }} ago</small>
           </p>
@@ -106,22 +107,30 @@
   </div>
 
   <div class="data-block ml-2 shadow-md">
-    <h2 class="data-block__heading" ng-click="reloadTransactions()">Latest Transactions</h2>
+    <h2 class="data-block__heading" ng-click="reloadTransactions()">Latest
+      Transactions</h2>
     <div class="data-block__entries">
-      <div class="data-block__entry" ng-repeat="t in latest_txs track by $index">
+      <div class="data-block__entry"
+        ng-repeat="t in latest_txs track by $index">
         <div class="data-block__entry-label">Tx</div>
         <div class="data-block__entry-info">
           <p>
-            <a href="/tx/{{ t.hash }}">{{ t.hash.substr(0,16) }}...</a>
+            <a href="/tx/{{ t.hash }}" title="{{ t.hash }}">
+              {{ t.hash.substr(0,16) }}...
+            </a>
             <br />
             <small>{{ t.timestamp | timeDuration }} ago</small>
           </p>
         </div>
         <div class="data-block__entry-info">
           <p>
-            From <a href="/addr/{{ t.from }}">{{ t.from.substr(0,24) }}...</a>
+            From <a href="/addr/{{ t.from }}" title="{{ t.from }}">
+              {{ t.from.substr(0,25) }}...
+            </a>
             <br />
-            To <a href="/addr/{{ t.to }}">{{ t.to.substr(0,24) }}...</a>
+            To <a href="/addr/{{ t.to }}" title="{{ t.to }}">
+              {{ t.to.substr(0,25) }}...
+            </a>
           </p>
         </div>
         <div class="data-block__entry-reward">

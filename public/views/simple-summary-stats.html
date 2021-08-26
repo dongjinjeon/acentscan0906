@@ -72,10 +72,12 @@
       <div class="stats-card__content">
         <h2>Acent Price</h2>
         <p>
-          <span class="font-bold">$</span> {{ cgData.market_data.current_price.usd }}
+          <span class="font-bold">$</span> {{
+          cgData.market_data.current_price.usd }}
           <span class="text-xs" title="*based on 24h price change"
             ng-class="{ 'text-red': !isBull, 'text-green-blue': isBull }">
-            (<span ng-show="isBull">+</span>{{ cgData.market_data.price_change_percentage_24h }}%)
+            (<span ng-show="isBull">+</span>{{
+            cgData.market_data.price_change_percentage_24h | number: 2 }}%)
           </span>
         </p>
       </div>
@@ -84,23 +86,35 @@
   <div class="stats-card">
     <div class="stats-card__col">
       <div class="stats-card__icon">
-        <div class="ico-transaction icon-water-blue-two"></div>
+        <div class="ico-blockchain"></div>
       </div>
       <div class="stats-card__content">
-        <h2>Network Hashrate</h2>
-        <p>{{ stats.hashrate | number: 0 }}/s</p>
+        <h2>BLOCK HEIGHT</h2>
+        <p>{{ stats.blockHeight }}</p>
       </div>
     </div>
   </div>
   <div class="stats-card">
     <div class="stats-card__col">
       <div class="stats-card__icon">
-        <div class="ico-globe icon-water-blue-two"></div>
+        <div class="ico-hashrate"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>Network Hashrate</h2>
+        <p>{{ stats.hashrate | number: 4 }} /s</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-market-cap"></div>
       </div>
       <div class="stats-card__content">
         <h2>Market Cap</h2>
         <p>
-          <span class="font-bold" ng-if="cgData.market_data.market_cap.usd">$ </span>
+          <span class="font-bold" ng-if="cgData.market_data.market_cap.usd">$
+          </span>
           <span ng-if="cgData.market_data.market_cap.usd">
             {{ cgData.market_data.market_cap.usd.toLocaleString() }}
           </span>
@@ -112,11 +126,22 @@
   <div class="stats-card">
     <div class="stats-card__col">
       <div class="stats-card__icon">
-        <div class="ico-data icon-water-blue-two"></div>
+        <div class="ico-blocktime"></div>
+      </div>
+      <div class="stats-card__content">
+        <h2>BLOCK TIME</h2>
+        <p>{{ stats.blockTime | number: 2 }} s</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card__col">
+      <div class="stats-card__icon">
+        <div class="ico-difficulty"></div>
       </div>
       <div class="stats-card__content">
         <h2>Difficulty</h2>
-        <p>{{ stats.difficulty | number: 2 }}</p>
+        <p>{{ stats.difficulty | number: 4 }}</p>
       </div>
     </div>
   </div>

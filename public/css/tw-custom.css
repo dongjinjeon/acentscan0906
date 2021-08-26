@@ -143,7 +143,7 @@ header ul:hover .dropdown {
 
 /* stats */
 .stats {
-  @apply w-full shadow-md border border-border rounded-lg grid grid-cols-2 mb-8;
+  @apply w-full shadow-md border border-border rounded-lg grid grid-cols-3 mb-8;
 }
 
 .stats-card {
@@ -151,11 +151,11 @@ header ul:hover .dropdown {
   height: 93px;
 }
 
-.stats-card:nth-child(2n) {
+.stats-card:nth-child(3n) {
   @apply border-r-0;
 }
 
-.stats-card:nth-last-child(-n + 2) {
+.stats-card:nth-last-child(-n + 3) {
   @apply border-b-0;
 }
 

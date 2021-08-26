@@ -13,7 +13,6 @@ angular.module('BlocksApp').controller('HomeController', function ($rootScope, $
 
     $http.get('https://api.coingecko.com/api/v3/coins/acent').then(resp => {
       $scope.cgData = resp.data;
-      console.log($scope.cgData.market_data.current_price.usd)
       if (Math.sign(resp.data.market_data.price_change_percentage_24h) === -1) {
         $scope.isBull = false;
       } else {
@@ -52,15 +51,29 @@ angular.module('BlocksApp').controller('HomeController', function ($rootScope, $
       $scope.txLoading = false;
     });
   }
+  $scope.reloadStats = function () {
+    $scope.statsLoading = true;
+
+    $http({
+      method: 'POST',
+      url: '/web3relay',
+      data: { "action": "hashrate" }
+    }).then(function (resp) {
+      $scope.stats = resp.data;
+      $scope.statsLoading = false;
+    });
+  }
 
   $scope.reloadBlocks();
   $scope.reloadTransactions();
   $scope.reloadCGData();
+  $scope.reloadStats();
 
   setInterval(() => {
     $scope.reloadBlocks();
     $scope.reloadTransactions();
     $scope.reloadCGData();
+    $scope.reloadStats();
   }, 60000);
   $scope.settings = $rootScope.setup;
 })
@@ -69,18 +82,19 @@ angular.module('BlocksApp').controller('HomeController', function ($rootScope, $
       restrict: 'E',
       templateUrl: '/views/simple-summary-stats.html',
       scope: true,
-      link: function (scope, elem, attrs) {
-        scope.stats = {};
-        var statsURL = "/web3relay";
-        $http.post(statsURL, { "action": "hashrate" })
-          .then(function (res) {
-            scope.stats.hashrate = res.data.hashrate;
-            scope.stats.difficulty = res.data.difficulty;
-            scope.stats.blockHeight = res.data.blockHeight;
-            scope.stats.blockTime = res.data.blockTime;
-            //console.log(res);
-          });
-      }
+      // link: function (scope, elem, attrs) {
+      //   scope.stats = {};
+      //   var statsURL = "/web3relay";
+      //   $http
+      //     .post(statsURL, { "action": "hashrate" })
+      //     .then(function (res) {
+      //       console.log(res.data)
+      //       scope.stats.hashrate = res.data.hashrate;
+      //       scope.stats.difficulty = res.data.difficulty;
+      //       scope.stats.blockHeight = res.data.blockHeight;
+      //       scope.stats.blockTime = res.data.blockTime;
+      //     });
+      // }
     }
   })
   .directive('siteNotes', function () {

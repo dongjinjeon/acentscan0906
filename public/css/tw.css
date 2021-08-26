@@ -25784,7 +25784,7 @@ header ul:hover .dropdown {
   margin-bottom: 2rem;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-radius: 0.5rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -25805,11 +25805,11 @@ header ul:hover .dropdown {
   height: 93px;
 }
 
-.stats-card:nth-child(2n) {
+.stats-card:nth-child(3n) {
   border-right-width: 0px;
 }
 
-.stats-card:nth-last-child(-n + 2) {
+.stats-card:nth-last-child(-n + 3) {
   border-bottom-width: 0px;
 }
 

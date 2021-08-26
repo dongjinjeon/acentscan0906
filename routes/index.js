@@ -347,17 +347,36 @@ var getData = function (req, res) {
 
 const searchTxs = function (req, res) {
   const param = req.body.data.toLowerCase();
+  const re = new RegExp(param, 'gi');
 
   try {
     Transaction
       .find({
-        hash: {
-          $regex: `.*${param}.*`
-        }
+        $or: [
+          {
+            hash: {
+              $regex: `.*${param}.*`
+            },
+          },
+          {
+            $where: `!!this.blockNumber.toString().match(${re})`
+          },
+          {
+            from: {
+              $regex: `.*${param}.*`
+            }
+          },
+          {
+            to: {
+              $regex: `.*${param}.*`
+            }
+          },
+        ]
       })
       .select(['hash'])
       .sort('-timestamp')
       .limit(10)
+      .lean()
       .exec(function (err, data) {
         res.write(JSON.stringify(data));
         res.end();
@@ -373,10 +392,37 @@ const searchBlocks = function (req, res) {
 
   try {
     Block
-      .find({ $where: `!!this.number.toString().match(${re})` })
+      .find({
+        $or: [
+          {
+            $where: `!!this.number.toString().match(${re})`
+          },
+          {
+            hash: {
+              $regex: `.*${param}.*`
+            }
+          },
+          {
+            parentHash: {
+              $regex: `.*${param}.*`
+            }
+          },
+          {
+            sha3Uncles: {
+              $regex: `.*${param}.*`
+            }
+          },
+          {
+            miner: {
+              $regex: `.*${param}.*`
+            }
+          },
+        ]
+      })
       .select(['number'])
       .sort('-timestamp')
       .limit(10)
+      .lean()
       .exec(function (err, data) {
         res.write(JSON.stringify(data));
         res.end();
@@ -393,17 +439,18 @@ const searchAddrs = function (req, res) {
     Transaction
       .find({
         $or: [{
-          to: {
+          from: {
             $regex: `.*${param}.*`
           }
         },
         {
-          from: {
+          to: {
             $regex: `.*${param}.*`
           }
         }]
       })
       .select(['to', 'from'])
+      .lean()
       .exec(function (err, data) {
         res.write(JSON.stringify(data));
         res.end();
@@ -487,6 +534,7 @@ const allTxs = function (lim, res) {
         'gas',
         'timestamp',
       ])
+      .lean()
       .sort({ blockNumber: -1 })
       .exec(function (err, data) {
         res.write(JSON.stringify(data));
@@ -509,6 +557,7 @@ const allBlocks = function (lim, res) {
         'totalDifficulty',
         'timestamp',
       ])
+      .lean()
       .sort({ number: -1 })
       .exec(function (err, data) {
         res.write(JSON.stringify(data));

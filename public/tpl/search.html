@@ -1,6 +1,7 @@
 <!-- COMPONENT: FILTERS -->
 <div class="filters h-12 relative flex justify-center">
-  <form name="form.searchForm" class="filters-form w-800 flex">
+  <form name="form.searchForm" class="filters-form w-800 flex"
+    ng-submit="showOptions()">
     <div class="filters-form__select-wrap border-r border-pale-grey-two">
       <select class="filters-form__select js-filter-select"
         ng-model="form.searchFilter" ng-change="filter(form.searchFilter)">
@@ -15,7 +16,7 @@
         class="filters-form__input"
         placeholder="Search by Address / Txn Hash / Block"
         ng-model="form.searchInput" ng-focus="showOptions()"
-        ng-change="handleChange(form.searchInput)" />
+        ng-change="handleChange(form.searchInput)" required />
       <ul class="filters-form__results"
         ng-show="form.searchInput && displayOptions">
         <div class="animate-pulse px-6 space-y-4 pt-3" ng-show="loading">
@@ -75,8 +76,7 @@
       </ul>
     </div>
     <div class="filters-form__btn-wrap w-12">
-      <button class="filters-form__btn" type="button"
-        ng-click="searchQuery(form.searchInput)"></button>
+      <button class="filters-form__btn" type="submit"></button>
     </div>
   </form>
 </div>

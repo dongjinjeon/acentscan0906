@@ -243,12 +243,8 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             name: 'BlocksApp',
             insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
             files: [
+              '/plugins/datatables.min.js',
               '/js/controllers/AddressController.js',
-              // 'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
-              // '/plugins/datatables/datatables.min.css',
-              // '/plugins/datatables/datatables.bootstrap.css',
-              // '/plugins/datatables/datatables.all.min.js',
-              '/plugins/datatables/datatable.min.js',
             ]
           });
         }]
@@ -304,8 +300,8 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             name: 'BlocksApp',
             insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
             files: [
+              '/plugins/datatables.min.js',
               '/js/controllers/BlocksController.js',
-              'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
             ]
           });
         }]
@@ -358,8 +354,8 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
             name: 'BlocksApp',
             insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
             files: [
+              '/plugins/datatables.min.js',
               '/js/controllers/TxsController.js',
-              'https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js',
             ]
           });
         }]

@@ -88,6 +88,20 @@ BlocksApp.controller('SearchController', ['$scope', '$location', 'setupObj', '$h
   $scope.displayOptions = false;
   $scope.getDataDone = false;
 
+  $scope.handleSubmit = (param) => {
+    const isWhitespace = /^\s*$/.test(param);
+
+    if (!param || isWhitespace) {
+      if ($scope.form.searchFilter) {
+        $location.path(`/err404/${$scope.form.searchFilter}`);
+      } else {
+        $location.path("/err404");
+      }
+    } else {
+      $scope.showOptions()
+    }
+  };
+
   $scope.handleChange = (param) => {
     $scope.clear();
     param
@@ -464,10 +478,14 @@ BlocksApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvid
       }
     })
     .state('err404', {
-      url: "/err404/{thing}/{hash}",
+      url: "/err404/:thing/:hash",
       templateUrl: "views/err_404.html",
       data: { pageTitle: '404 Not Found.' },
       controller: "ErrController",
+      params: {
+        thing: { squash: true, value: null },
+        hash: { squash: true, value: null },
+      },
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load({
